@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <link rel="stylesheet" href="../../public/css/main.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href='../../public/css/main.css'>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Della+Respira&display=swap">
+
+</head>
+<style>
+    * {
+        font-family: "Della Respira", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    :root {
+        --main-bg: #1e272e;
+        --main-color: #0097e6;
+
+
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    html {
+        font-size: 62.5%;
+
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    .main_menu {
+        background-color: var(--main-bg);
+    }
+
+    .navbar {
+        padding: 2rem 0;
+        color: #fff;
+        background-color: var(--main-bg);
+    }
+
+    .navbar a {
+        color: #fff;
+        font-size: 1.8rem;
+    }
+
+    .navbar li {
+        margin-left: 2rem;
+    }
+
+    .navbar-toggler {
+        background-color: rgb(225, 4, 4);
+    }
+
+    .navbar a:hover {
+        color: var(--main-color);
+    }
+
+    .fa-snowflake {
+        transition: all linear;
+        animation: rot 2s linear infinite;
+        color: var(--main-color);
+    }
+
+    @keyframes rot {
+        0% {
+            transition: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* main-header */
+    .main_header_left {
+        height: 70rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .main_header_left p {
+        font-size: 2rem;
+    }
+
+    .main_header_left h1 {
+        font-size: 4rem;
+        margin: 1rem 0 4rem 0;
+        text-transform: capitalize;
+    }
+
+    .main_header_left .spanHeader {
+        color: var(--main-color);
+    }
+
+    .main_header_left button {
+        border: none;
+        padding: 0 0.8rem 0.8rem;
+        font-size: 1.4rem;
+        border-radius: 2rem;
+        text-transform: capitalize;
+        box-shadow: 0 8px 6px -6px #000;
+        outline: none;
+    }
+
+    .main_header_left button :hover {
+        color: #fff;
+        box-shadow: 0 8px 6px -6px var(--main-color);
+    }
+
+    .main_header_right {
+        height: 70rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .main_header_right figure img {
+        filter: drop-shadow(0 0.5rem 1rem rgba(0, 0, 0, 0.3));
+    }
+
+    /* Footer Styling */
+    footer {
+        width: 100%;
+        background-color: var(--main-bg);
+        display: flex;
+        flex-direction: column;
+
+        margin-top: auto;
+        align-items: center;
+    }
+
+    footer p {
+        margin: 0;
+        text-align: center;
+        color: #fff;
+        height: 5rem;
+        font-size: 1.4rem;
+        margin-top: 2%;
+
+    }
+
+    /*Temp Details */
+    .temp_form {
+        width: 60%;
+        position: relative;
+        margin: 10rem auto 6rem;
+    }
+
+    .temp_form input[type="text"] {
+        width: 100%;
+        padding: 2rem 5rem 2rem 2rem;
+        background: #1e202b;
+        color: white;
+        outline: none;
+        border: none;
+        font-size: 1.7rem;
+        border-radius: 3rem;
+    }
+
+    ::placeholder {
+        color: #bfc1c8;
+    }
+
+    .temp_form input[type="submit"] {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        bottom: 5px;
+        border: none;
+        background: #009ad8;
+        padding: 0 3rem;
+        border-radius: 3rem;
+        color: white;
+        font-size: 1.6rem;
+
+    }
+
+    .temp_form input[type="submit"]:hover {
+        color: #009ad8;
+        background-color: #fff;
+    }
+
+    .tempInformation {
+        width: 40rem;
+        margin: auto;
+        min-height: 20rem;
+        background-color: #323544;
+        border-radius: 1rem;
+
+        font-family: "Roboto", sans-serif;
+    }
+
+    .top_layer {
+        width: 100%;
+        height: 20%;
+        background-color: #2d303d;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 1rem;
+        padding: 2rem 0 2rem 2rem;
+    }
+
+    .top_layer p {
+        color: #fff;
+        font-weight: 300;
+        padding: 2rem;
+
+    }
+
+    .main_layer {
+        width: 100%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .main_layer #city_name {
+        padding: 2rem 0;
+        color: #fff;
+        font-weight: 300;
+        font-size: 2rem;
+    }
+
+    .main_layer .middle_layer {
+        display: flex;
+        justify-content: space-around;
+        color: #fff;
+    }
+
+    .main_layer .middle_layer p,
+    .main_layer .middle_layer .fa {
+        font-size: 7rem;
+        font-weight: 900;
+    }
+
+    .fa {
+        color: #009ad8;
+
+    }
+
+    sup {
+        font-size: 6rem;
+        margin-top: -2rem;
+    }
+
+    .data_hide {
+        visibility: hidden;
+        transition: all 0.3s linear;
+    }
+
+    /* Responsive Design */
+    @media(max-width:768px) {
+        .main_header_left {
+            height: auto;
+            margin: 5rem 0;
+        }
+
+        .main_header_right {
+            height: auto;
+            margin-top: 3rem;
+        }
+    }
+</style>
+
+<body>
+    <div class="container-fluid main_menu">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <nav class="navbar navbar-expand-lg ">
+
+                    <a class="navbar-brand" href="#"><i class="far fa-snowflake"></i> JP Weathers</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <ul class="navbar-nav float-right">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/weather">Weather</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="/about" aria-disabled="true">About</a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- main-header -->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form" onsubmit="getInfo(event);">
+                        <input type="text" name="" id="inputData" placeholder="Enter your city name" autocomplete="off">
+                        <input type="submit" value="search" id="submitBtn" >
+                    </form>
+                </div>
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <p id="day"></p>
+                        <p id="today_date"></p>
+                    </div>
+                    <div class="main_layer">
+                        <p id="city_name"></p>
+                        <div id="tempManagement" class="middle_layer data_hide">
+                            <p id="temp"><span id="displayTemp"></span><sup>0</sup>C</p>
+                            <p id="temp_status"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Code -->
+    {{>footer}}
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        var dataHidePresent=true;
+        const cityName = document.getElementById("inputData");
+        const city_name = document.getElementById('city_name');
+        const displayTemp=document.getElementById('displayTemp');
+        const temp_status=document.getElementById('temp_status');
+        const currentDate=new Date();
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        const day=document.getElementById('day').innerText=weekday[currentDate.getDay()];
+        const today_date=document.getElementById('today_date').innerText=currentDate.getDate();
+        const getInfo = async (event) => {
+          
+             event.preventDefault();
+           let info=cityName.value;
+          
+            if (info === "") {
+                city_name.innerText = `Plz write name before search`;
+                if(!dataHidePresent){
+                    document.getElementById("tempManagement").classList.add('data_hide');
+                    dataHidePresent=true;
+                    }
+            } else {
+                try {
+                    const url = `https://api.openweathermap.org/data/2.5/weather?q=${info}&units=metric&appid=ae095ac40e27d19f9fa08f13d53dad7a`;
+                    const resp = await fetch(url);
+                    const data=await resp.json();
+                    console.log(data);
+                  if(dataHidePresent){
+                    dataHidePresent=false;
+                    document.getElementById("tempManagement").classList.remove('data_hide');
+                  }
+                   console.log(data);
+                    console.log(data.weather[0].main);
+                    city_name.innerText=data.name+","+data.sys.country;
+                   displayTemp.innerText=data.main.temp;
+                    console.log("cityname"+" "+data.main.temp)
+                    let tempMood=data.weather[0].main;
+              
+                  if(tempMood=="Clear"){
+                        temp_status.innerHTML="<i class='fas fa-sun' style='color:#eccc68;'></i>";
+                  }else if(tempMood=="Clouds"){
+                         temp_status.innerHTML="<i class='fas fa-cloud' style='color:#f1f2f6;'></i>"                   
+                  }else if(tempMood=="Rain"){
+                          temp_status.innerHTML="<i class='fas fa-rain' style='color:#a4b0be;'></i>"                  
+                  }else{
+                         temp_status.innerHTML="<i class='fas fa-sun' style='color:#eccc68;'></i>"                   
+                  }
+
+
+                }catch{
+                    if(!dataHidePresent){
+                    document.getElementById("tempManagement").classList.add('data_hide');
+                    dataHidePresent=true;
+                    }
+                      city_name.innerText = `Plz write correct name `;
+                }
+                }
+               
+
+        }
+
+    </script>
+</body>
+
+</html>
